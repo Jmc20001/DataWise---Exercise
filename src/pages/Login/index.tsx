@@ -1,35 +1,37 @@
 import { useEffect, useRef, useState } from "react"
-import { useLocation, Link } from "react-router-dom"
+import { useLocation, Link, useNavigation, useNavigate } from "react-router-dom"
 
 import { Input } from "../../components";
 
-import database from "../../../db/data.json";
-
-// import datawiseLogo from "../../assets/datawise.jpg"
 
 // model template > https://www.freepik.com/free-vector/abstract-waves-log-landing-page_5481485.htm#query=login%20template&position=11&from_view=keyword&track=ais&uuid=0962221c-7755-4fa2-9355-43bcf7514770#position=11&query=login%20template
 
 export default function Login() {
 
     const location = useLocation();
+    const navigate = useNavigate();
     
+    
+    // vars for login form
     const [ loginValues, setLoginValues ] = useState<{ email?: string, password?: string }>({
         email: "",
         password: ""
     });
 
+    // vars for login error messages
     const [ errorMessages, setErrorMessages ] = useState<{ email?: string, password?: string, general?: string }>({
         email: "",
         password: "",
         general: ""
     })
 
+    // boolean for registration outcome
     const [ success, setSuccess ] = useState<boolean>(false);
 
-    
 
 
     useEffect(() => {
+        // set div layout classname to include the location pathname. this will help with styling
         const layout = document.querySelector("div.layout")
 
         if(layout?.className)
@@ -37,14 +39,25 @@ export default function Login() {
 
         layout?.setAttribute("class", `layout ${location.pathname === "/" ? "/dashboard" : location.pathname}`)
 
+        // clear localstorage
+        localStorage.clear();
+
+        // in case success is true we set it to false
         if(success)
             setSuccess(false)
 
     }, [])
 
-    const fieldValidation = (values: typeof loginValues) => {
-        console.log(values)
 
+    /**
+     * Handles fields validations
+     * @params loginValues
+     * @returns boolean
+     */
+    const fieldValidation = (values: typeof loginValues) => {
+        
+        // checks if values are either empty or null.        
+        // if so, we set a general error message and return false
         if(!values.email || values.email == "" || !values.password || values.password == "" ){
             setErrorMessages({
                 email: "",
@@ -55,6 +68,8 @@ export default function Login() {
             return false
         }
 
+        // check if email values meets regex requirements
+        // if not, we set a specific error message - email error message - and return false
         if(!values.email?.match(/^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$/g)){
             setErrorMessages({
                 email: "Write a valid email account",
@@ -65,6 +80,7 @@ export default function Login() {
             return false
         }
 
+        // if everything checks out, we "clean" all error messages and return true
         setErrorMessages({
             email: "",
             password: "",
@@ -74,8 +90,12 @@ export default function Login() {
         return true
     }
 
+    /**
+     * Handles fields onChange
+     * @params React.ChangeEvent<HTMLInputElement>
+     * @returns 
+     */
     const handleLogin = (event: React.ChangeEvent<HTMLInputElement>) => {
-
         setLoginValues(old => {
             return {
                 ...old,
@@ -84,35 +104,58 @@ export default function Login() {
         })
     }
 
-    const handleLoginSubmition = () => {
-        const { users } = database;
-
+    /**
+     * Handles login
+     * @params 
+     * @returns 
+     */
+    async function handleLoginSubmition() {
+       
+        // firstly, we call field validation function
+        // if the return output is false then we abort 
         if(!fieldValidation(loginValues))
             return 
-        
+                
+        try {
+            // we create a get method
+            await fetch("http://localhost:5000/users").then(res => {                
+                // check if response is ok and send either error or response in a json format
+                if(!res.ok)
+                    throw Error('Error fetching users data');
 
-        if(!users.find(x => x.email == loginValues.email) || !users.find(x => x.password == loginValues.password)){
+                return res.json();
+            }).then(data => {
+                // we check if the submited values are equal with one of the users, if not we send an error message
+                if(!data.find((x: { email: string | undefined; password: string | undefined; }) => x.email == loginValues.email && x.password == loginValues.password)){
+                    setErrorMessages({
+                        email: "",
+                        password: "",
+                        general: "Either email or password is wrong"
+                    })
+                    
+                    return
+                }
+                
+                // we set a timeout - 5s
+                setTimeout(() => {
+                    setErrorMessages({ email: "", password: "", general: "" }) // clear error msgs
 
-            setErrorMessages({
-                email: "",
-                password: "",
-                general: "Either email or password is wrong"
-            })
-            console.log(loginValues)
-            return
+                    // send to localstorage both the id and new user flag as false
+                    localStorage.setItem('User', JSON.stringify({
+                        id: data.find((x: { email: string | undefined; password: string | undefined; }) => x.email == loginValues.email && x.password == loginValues.password).id,
+                        newUser: false
+                    }))
+                    setSuccess(true) // set success to true
+                    setTimeout(() => { navigate("/"); }, 2000) // after 2s we redirect user to dashboard
+                }, 5000)
+            }).catch(err => {
+                // in case there's an error, we throw it
+                throw err
+            });
+        } catch(err) {
+            // in case there's an error, we throw it
+            throw err
         }
-        
-
-        setTimeout(() => {
-            setErrorMessages({
-                email: "",
-                password: "",
-                general: ""
-            })
-
-            setSuccess(true)
-        }, 1000)
-        
     }
 
 
@@ -143,7 +186,7 @@ export default function Login() {
                                 Not a member yet?
                             </Link>
                         </span>
-                        <button type="submit" className={`submit-login ${!success ? "" : "logged-in"}`} onClick={handleLoginSubmition}>
+                        <button type="submit" className={`submit-login ${!success ? "" : "logged-in"}`} onClick={handleLoginSubmition} >
                             { !success ? "Enter" : "Glad your back! :)"}
                         </button>
                     </div>

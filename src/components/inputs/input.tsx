@@ -8,7 +8,7 @@ type InputProps = {
     value?: string | number,
     label?: string,
     placeholder?: string,
-    errorMessage?: string
+    errorMessage?: string,
     onChange?: any,
     onClick?: () => void
 }

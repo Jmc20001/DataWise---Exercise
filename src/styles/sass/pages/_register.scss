@@ -123,7 +123,7 @@ div.\/register {
                     color: red;
                     font: normal normal 500 14px / 14px "Sofia sans", sans-serif;
                     text-align: right;
-                    line-height: 0.5em;
+                    line-height: 1em;
                 }
             }
 
@@ -134,7 +134,7 @@ div.\/register {
                     color: red;
                     font: normal normal 500 14px / 14px "Sofia sans", sans-serif;
                     text-align: left;
-                    line-height: 0.5em;
+                    line-height: 1em;
                 }
 
                 &.redirect {
@@ -218,7 +218,7 @@ div.\/register {
             >p { display: none; }
         }
 
-        >.right {
+        >.left {
 
             >h1 {
                 font: normal normal 700 28px/30px "Sofia sans", sans-serif;
@@ -246,9 +246,10 @@ div.\/register {
         position: relative;
 
         grid-template-columns: none;
-        grid-template-rows: 1fr 2fr;
+        grid-template-rows: 2fr 1fr;
 
         max-width: 85vw;
+        // row-gap: 20px;
 
         >.right {
             
@@ -280,7 +281,7 @@ div.\/register {
             }
         }
 
-        >.right {
+        >.left {
 
             >h1 {
                 font: normal normal 700 20px/22px "Sofia sans", sans-serif;

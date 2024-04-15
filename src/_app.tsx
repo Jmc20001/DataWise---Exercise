@@ -1,8 +1,6 @@
 import React, { useState } from 'react'
 import * as Pages from "./pages/index"
 
-// import reactLogo from './assets/react.svg'
-// import viteLogo from './vite.svg'
 
 import { 
   createBrowserRouter,
@@ -12,6 +10,7 @@ import {
   RouterProvider
 } from "react-router-dom";
 
+// use react router dom to navigate through pages
 const router = createBrowserRouter([
   {
     path: "/",

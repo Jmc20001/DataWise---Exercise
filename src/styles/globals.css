@@ -4,6 +4,23 @@ div.layout {
   height: 100vh;
 }
 
+/* HTML: <div class="loader"></div> */
+div.loading {
+  font-weight: bold;
+  display: inline-block;
+  font-family: monospace;
+  font-size: 30px;
+  -webkit-clip-path: inset(0 3ch 0 0);
+          clip-path: inset(0 3ch 0 0);
+  animation: load 1s steps(4) infinite;
+}
+@keyframes load {
+  to {
+    -webkit-clip-path: inset(0 -1ch 0 0);
+            clip-path: inset(0 -1ch 0 0);
+  }
+}
+
 div.\/login {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -347,13 +364,13 @@ div.\/register > .left > div.form-container > .register-form > span {
   color: red;
   font: normal normal 500 14px/14px "Sofia sans", sans-serif;
   text-align: right;
-  line-height: 0.5em;
+  line-height: 1em;
 }
 div.\/register > .left > div.form-container > span.general-error {
   color: red;
   font: normal normal 500 14px/14px "Sofia sans", sans-serif;
   text-align: left;
-  line-height: 0.5em;
+  line-height: 1em;
 }
 div.\/register > .left > div.form-container > span.redirect {
   align-self: flex-end;
@@ -414,19 +431,19 @@ div.\/register > .left > div.form-container > button.submit-register.logged-in {
   div.\/register > .right > p {
     display: none;
   }
-  div.\/register > .right > h1 {
+  div.\/register > .left > h1 {
     font: normal normal 700 28px/30px "Sofia sans", sans-serif;
   }
-  div.\/register > .right > h5 {
+  div.\/register > .left > h5 {
     display: none;
   }
-  div.\/register > .right > div.form-container {
+  div.\/register > .left > div.form-container {
     width: 70%;
   }
-  div.\/register > .right > div.form-container > .register-form > input {
+  div.\/register > .left > div.form-container > .register-form > input {
     font: normal normal 500 18px/24px "Sofia sans", sans-serif;
   }
-  div.\/register > .right > div.form-container > button {
+  div.\/register > .left > div.form-container > button {
     font: normal normal 500 18px/20px "Sofia sans", sans-serif;
   }
 }
@@ -434,7 +451,7 @@ div.\/register > .left > div.form-container > button.submit-register.logged-in {
   div.\/register {
     position: relative;
     grid-template-columns: none;
-    grid-template-rows: 1fr 2fr;
+    grid-template-rows: 2fr 1fr;
     max-width: 85vw;
   }
   div.\/register > .right > hr {
@@ -456,13 +473,13 @@ div.\/register > .left > div.form-container > button.submit-register.logged-in {
     height: 6px;
     width: 70px;
   }
-  div.\/register > .right > h1 {
+  div.\/register > .left > h1 {
     font: normal normal 700 20px/22px "Sofia sans", sans-serif;
   }
-  div.\/register > .right > div.form-container > .register-form > input {
+  div.\/register > .left > div.form-container > .register-form > input {
     font: normal normal 500 16px/22px "Sofia sans", sans-serif;
   }
-  div.\/register > .right > div.form-container > button.submit-register {
+  div.\/register > .left > div.form-container > button.submit-register {
     font: normal normal 500 16px/18px "Sofia sans", sans-serif;
   }
 }

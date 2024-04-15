@@ -19,7 +19,12 @@ export default function Dashboard() {
         <>
             <div className={`content ${location.pathname}`}>
 
-            {/* <h1>dashboard</h1> */}
+                <div>
+                    sidenav
+                </div>
+                <div>
+                    content
+                </div>
             </div>
         </>
     )

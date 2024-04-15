@@ -1,48 +1,491 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
+@import url("https://fonts.googleapis.com/css2?family=Sofia+Sans:ital,wght@0,1;0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;0,1000;1,1;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900;1,1000&display=swap");
+div.layout {
+  width: 100vw;
+  height: 100vh;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
+/* HTML: <div class="loader"></div> */
+div.loading {
+  font-weight: bold;
+  display: inline-block;
+  font-family: monospace;
+  font-size: 30px;
+  -webkit-clip-path: inset(0 3ch 0 0);
+          clip-path: inset(0 3ch 0 0);
+  animation: load 1s steps(4) infinite;
 }
-
-.logo:hover {
-  filter: drop-shadow(0 0 2em rgba(100, 108, 255, 0.6666666667));
-}
-
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em rgba(97, 218, 251, 0.6666666667));
-}
-
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
+@keyframes load {
   to {
-    transform: rotate(360deg);
+    -webkit-clip-path: inset(0 -1ch 0 0);
+            clip-path: inset(0 -1ch 0 0);
   }
-}
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
-.card {
-  padding: 2em;
 }
 
-.read-the-docs {
-  color: #888;
+div.\/login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 70vw;
+  max-height: 70vh;
+  background: #fff;
+  border-radius: 18px;
+  transition: all 0.5s ease-in-out;
+}
+div.\/login > .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../../assets/login form pic.jpg");
+  background-size: cover;
+  border-radius: 18px;
+  color: #fff;
+  position: relative;
+}
+div.\/login > .left > img {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  max-width: 10em;
+}
+div.\/login > .left > span {
+  font: normal normal 500 24px/28px "Sofia sans", sans-serif;
+  letter-spacing: 0.25px;
+}
+div.\/login > .left > label {
+  font: normal normal 700 44px/28px "Sofia sans", sans-serif;
+  line-height: 1.5em;
+}
+div.\/login > .left > hr {
+  height: 8px;
+  width: 85px;
+  background: #fff;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 50px;
+  margin: 0 auto;
+  border: 0;
+}
+div.\/login > .left > p {
+  font: normal normal 500 14px/18px "Sofia sans", sans-serif;
+  letter-spacing: 1.5px;
+  line-height: 1.5em;
+  max-width: 50%;
+}
+div.\/login > .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+div.\/login > .right > h1 {
+  color: #0058bc;
+  font: normal normal 700 32px/34px "Sofia sans", sans-serif;
+}
+div.\/login > .right > h5.login-description {
+  color: #e3e3e3;
+  max-width: 50%;
+  font: normal normal 500 12px/16px "Sofia sans", sans-serif;
+  margin-top: 0;
+}
+div.\/login > .right > div.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  row-gap: 15px;
+}
+div.\/login > .right > div.form-container > .login-form {
+  display: flex;
+  flex-direction: column;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  row-gap: 15px;
+  margin: 15px 0 0 0;
+}
+div.\/login > .right > div.form-container > .login-form input {
+  background: #f7f7f7;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  border-left: 3px solid #0058bc;
+  font: normal normal 500 22px/24px "Sofia sans", sans-serif;
+  line-height: 1.8em;
+  padding-left: 15px;
+  color: #a1a1a1;
+}
+div.\/login > .right > div.form-container > .login-form input::-moz-placeholder {
+  color: #dfdfdf;
+}
+div.\/login > .right > div.form-container > .login-form input::placeholder {
+  color: #dfdfdf;
+}
+div.\/login > .right > div.form-container > .login-form input:active, div.\/login > .right > div.form-container > .login-form input:focus-visible, div.\/login > .right > div.form-container > .login-form input:focus {
+  outline: 0;
+}
+div.\/login > .right > div.form-container > .login-form > span {
+  color: red;
+  font: normal normal 500 14px/14px "Sofia sans", sans-serif;
+  text-align: right;
+  line-height: 0.5em;
+}
+div.\/login > .right > div.form-container > span.general-error {
+  color: red;
+  font: normal normal 500 14px/14px "Sofia sans", sans-serif;
+  text-align: left;
+  line-height: 0.5em;
+}
+div.\/login > .right > div.form-container > span.redirect {
+  align-self: flex-end;
+  font: normal normal 500 14px/16px "Sofia sans", sans-serif;
+  color: #0058bc;
+  margin: 0 0 15px 0;
+}
+div.\/login > .right > div.form-container > span.redirect:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+div.\/login > .right > div.form-container > button.submit-login {
+  background-color: #0058bc;
+  border-radius: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  font: normal normal 500 20px/22px "Sofia sans", sans-serif;
+  letter-spacing: 3px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+}
+div.\/login > .right > div.form-container > button.submit-login:after {
+  content: "";
+  background: rgba(25, 134, 212, 0.6235294118);
+  padding-top: 300%;
+  padding-left: 350%;
+  display: block;
+  position: absolute;
+  margin-left: -30px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 1.5s;
+}
+div.\/login > .right > div.form-container > button.submit-login:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+div.\/login > .right > div.form-container > button.submit-login.logged-in {
+  background: #059862;
+  transition: 200ms;
+}
+@media only screen and (max-width: 1125px) {
+  div.\/login > .left > img {
+    max-width: 8em;
+  }
+  div.\/login > .left > span {
+    font: normal normal 500 20px/24px "Sofia sans", sans-serif;
+  }
+  div.\/login > .left > label {
+    font: normal normal 700 36px/28px "Sofia sans", sans-serif;
+    line-height: inherit;
+  }
+  div.\/login > .left > p {
+    display: none;
+  }
+  div.\/login > .right > h1 {
+    font: normal normal 700 28px/30px "Sofia sans", sans-serif;
+  }
+  div.\/login > .right > h5 {
+    display: none;
+  }
+  div.\/login > .right > div.form-container {
+    width: 70%;
+  }
+  div.\/login > .right > div.form-container > .login-form > input {
+    font: normal normal 500 18px/24px "Sofia sans", sans-serif;
+  }
+  div.\/login > .right > div.form-container > button {
+    font: normal normal 500 18px/20px "Sofia sans", sans-serif;
+  }
+}
+@media only screen and (max-width: 815px) {
+  div.\/login {
+    position: relative;
+    grid-template-columns: none;
+    grid-template-rows: 1fr 2fr;
+    max-width: 85vw;
+  }
+  div.\/login > .left > hr {
+    position: absolute;
+    bottom: 2em;
+  }
+}
+@media only screen and (max-width: 500px) {
+  div.\/login {
+    max-height: 60vh;
+  }
+  div.\/login > .left > span {
+    font: normal normal 500 14px/24px "Sofia sans", sans-serif;
+  }
+  div.\/login > .left > label {
+    font: normal normal 700 26px/28px "Sofia sans", sans-serif;
+  }
+  div.\/login > .left > hr {
+    height: 6px;
+    width: 70px;
+  }
+  div.\/login > .right > h1 {
+    font: normal normal 700 20px/22px "Sofia sans", sans-serif;
+  }
+  div.\/login > .right > div.form-container > .login-form > input {
+    font: normal normal 500 16px/22px "Sofia sans", sans-serif;
+  }
+  div.\/login > .right > div.form-container > button.submit-login {
+    font: normal normal 500 16px/18px "Sofia sans", sans-serif;
+  }
+}
+
+div.\/register {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  max-width: 70vw;
+  max-height: 70vh;
+  background: #fff;
+  border-radius: 18px;
+  transition: all 0.5s ease-in-out;
+}
+div.\/register > .right {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-image: url("../../../assets/login form pic.jpg");
+  background-size: cover;
+  border-radius: 18px;
+  color: #fff;
+  position: relative;
+}
+div.\/register > .right > img {
+  position: absolute;
+  left: 1em;
+  top: 1em;
+  max-width: 10em;
+}
+div.\/register > .right > span {
+  font: normal normal 500 24px/28px "Sofia sans", sans-serif;
+  letter-spacing: 0.25px;
+}
+div.\/register > .right > label {
+  font: normal normal 700 44px/28px "Sofia sans", sans-serif;
+  line-height: 1.5em;
+}
+div.\/register > .right > hr {
+  height: 8px;
+  width: 85px;
+  background: #fff;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border-radius: 50px;
+  margin: 0 auto;
+  border: 0;
+}
+div.\/register > .right > p {
+  font: normal normal 500 14px/18px "Sofia sans", sans-serif;
+  letter-spacing: 1.5px;
+  line-height: 1.5em;
+  max-width: 50%;
+}
+div.\/register > .left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+div.\/register > .left > h1 {
+  color: #0058bc;
+  font: normal normal 700 32px/34px "Sofia sans", sans-serif;
+}
+div.\/register > .left > h5.register-description {
+  color: #e3e3e3;
+  max-width: 70%;
+  font: normal normal 500 12px/16px "Sofia sans", sans-serif;
+  margin-top: 0;
+}
+div.\/register > .left > div.form-container {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  row-gap: 15px;
+}
+div.\/register > .left > div.form-container > .register-form {
+  display: flex;
+  flex-direction: column;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  row-gap: 15px;
+  margin: 15px 0 0 0;
+}
+div.\/register > .left > div.form-container > .register-form > .register-name {
+  display: flex;
+  flex-direction: row;
+  -moz-column-gap: 25px;
+       column-gap: 25px;
+}
+div.\/register > .left > div.form-container > .register-form > .register-name > input {
+  width: 100%;
+}
+div.\/register > .left > div.form-container > .register-form input {
+  background: #f7f7f7;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  border-left: 3px solid #0058bc;
+  font: normal normal 500 22px/24px "Sofia sans", sans-serif;
+  line-height: 1.8em;
+  padding-left: 15px;
+  color: #a1a1a1;
+}
+div.\/register > .left > div.form-container > .register-form input::-moz-placeholder {
+  color: #dfdfdf;
+}
+div.\/register > .left > div.form-container > .register-form input::placeholder {
+  color: #dfdfdf;
+}
+div.\/register > .left > div.form-container > .register-form input:active, div.\/register > .left > div.form-container > .register-form input:focus-visible, div.\/register > .left > div.form-container > .register-form input:focus {
+  outline: 0;
+}
+div.\/register > .left > div.form-container > .register-form > span {
+  color: red;
+  font: normal normal 500 14px/14px "Sofia sans", sans-serif;
+  text-align: right;
+  line-height: 1em;
+}
+div.\/register > .left > div.form-container > span.general-error {
+  color: red;
+  font: normal normal 500 14px/14px "Sofia sans", sans-serif;
+  text-align: left;
+  line-height: 1em;
+}
+div.\/register > .left > div.form-container > span.redirect {
+  align-self: flex-end;
+  font: normal normal 500 14px/16px "Sofia sans", sans-serif;
+  color: #0058bc;
+  margin: 0 0 15px 0;
+}
+div.\/register > .left > div.form-container > span.redirect:hover {
+  cursor: pointer;
+  text-decoration: underline;
+}
+div.\/register > .left > div.form-container > button.submit-register {
+  background-color: #0058bc;
+  border-radius: 50px;
+  text-transform: uppercase;
+  text-align: center;
+  font: normal normal 500 20px/22px "Sofia sans", sans-serif;
+  letter-spacing: 3px;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  transition-duration: 0.4s;
+  -webkit-transition-duration: 0.4s;
+}
+div.\/register > .left > div.form-container > button.submit-register:after {
+  content: "";
+  background: rgba(25, 134, 212, 0.6235294118);
+  padding-top: 300%;
+  padding-left: 350%;
+  display: block;
+  position: absolute;
+  margin-left: -30px !important;
+  margin-top: -120%;
+  opacity: 0;
+  transition: all 1.5s;
+}
+div.\/register > .left > div.form-container > button.submit-register:active:after {
+  padding: 0;
+  margin: 0;
+  opacity: 1;
+  transition: 0s;
+}
+div.\/register > .left > div.form-container > button.submit-register.logged-in {
+  background: #059862;
+  transition: 200ms;
+}
+@media only screen and (max-width: 1125px) {
+  div.\/register > .right > img {
+    max-width: 8em;
+  }
+  div.\/register > .right > span {
+    font: normal normal 500 20px/24px "Sofia sans", sans-serif;
+  }
+  div.\/register > .right > label {
+    font: normal normal 700 36px/28px "Sofia sans", sans-serif;
+    line-height: inherit;
+  }
+  div.\/register > .right > p {
+    display: none;
+  }
+  div.\/register > .left > h1 {
+    font: normal normal 700 28px/30px "Sofia sans", sans-serif;
+  }
+  div.\/register > .left > h5 {
+    display: none;
+  }
+  div.\/register > .left > div.form-container {
+    width: 70%;
+  }
+  div.\/register > .left > div.form-container > .register-form > input {
+    font: normal normal 500 18px/24px "Sofia sans", sans-serif;
+  }
+  div.\/register > .left > div.form-container > button {
+    font: normal normal 500 18px/20px "Sofia sans", sans-serif;
+  }
+}
+@media only screen and (max-width: 815px) {
+  div.\/register {
+    position: relative;
+    grid-template-columns: none;
+    grid-template-rows: 2fr 1fr;
+    max-width: 85vw;
+  }
+  div.\/register > .right > hr {
+    position: absolute;
+    bottom: 2em;
+  }
+}
+@media only screen and (max-width: 500px) {
+  div.\/register {
+    max-height: 60vh;
+  }
+  div.\/register > .right > span {
+    font: normal normal 500 14px/24px "Sofia sans", sans-serif;
+  }
+  div.\/register > .right > label {
+    font: normal normal 700 26px/28px "Sofia sans", sans-serif;
+  }
+  div.\/register > .right > hr {
+    height: 6px;
+    width: 70px;
+  }
+  div.\/register > .left > h1 {
+    font: normal normal 700 20px/22px "Sofia sans", sans-serif;
+  }
+  div.\/register > .left > div.form-container > .register-form > input {
+    font: normal normal 500 16px/22px "Sofia sans", sans-serif;
+  }
+  div.\/register > .left > div.form-container > button.submit-register {
+    font: normal normal 500 16px/18px "Sofia sans", sans-serif;
+  }
 }
 
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Sofia-sans", sans-serif;
   line-height: 1.5;
   font-weight: 400;
   color-scheme: light dark;
@@ -56,20 +499,23 @@
 
 a {
   font-weight: 500;
-  color: #646cff;
+  color: #0058bc;
   text-decoration: inherit;
 }
 
 a:hover {
-  color: #535bf2;
+  text-decoration: underline;
 }
 
 body {
   margin: 0;
   display: flex;
   place-items: center;
+  justify-content: center;
   min-width: 320px;
-  min-height: 100vh;
+  height: 100vh;
+  overflow: hidden;
+  background: rgb(225, 239, 241);
 }
 
 h1 {
@@ -94,19 +540,37 @@ button:hover {
 }
 
 button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
+button:focus-visible,
+button:active {
+  outline: 0;
 }
 
-@media (prefers-color-scheme: light) {
+@media (prefers-color-scheme: dark) {
   :root {
     color: #213547;
     background-color: #ffffff;
   }
-  a:hover {
-    color: #747bff;
-  }
   button {
     background-color: #f9f9f9;
   }
+}
+#root {
+  text-align: center;
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+* {
+  transition: all 0.5s ease;
 }/*# sourceMappingURL=globals.css.map */

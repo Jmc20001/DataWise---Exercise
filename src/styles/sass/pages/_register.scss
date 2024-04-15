@@ -1,0 +1,303 @@
+div.\/register {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    max-width: 70vw;
+    max-height: 70vh;
+
+    background: #fff;
+    border-radius: 18px;
+
+    transition: all .5s ease-in-out;
+
+    >.right {
+        display: flex;
+        flex-direction: column;
+
+        align-items: center;
+        justify-content: center;
+
+        background-image: url("../../../assets/login\ form\ pic.jpg");
+        background-size: cover;
+        border-radius: 18px;
+
+        color: #fff;
+        position: relative;
+
+        >img {
+            position: absolute;
+            left: 1em;
+            top: 1em;
+            max-width: 10em;
+        }
+
+        >span {
+            font: normal normal 500 24px/28px "Sofia sans", sans-serif;
+            letter-spacing: .25px;
+        }
+
+        >label {
+            font: normal normal 700 44px / 28px "Sofia sans", sans-serif;
+            line-height: 1.5em;
+        }
+
+        >hr {
+            height: 8px;
+            width: 85px;
+            background: #fff;
+            appearance: none;
+            border-radius: 50px;
+            margin: 0 auto;
+            border: 0;
+        }
+
+        >p {
+            font: normal normal 500 14px / 18px "Sofia sans", sans-serif;
+            letter-spacing: 1.5px;
+            line-height: 1.5em;
+            max-width: 50%;
+        }
+    }
+
+    >.left {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+
+
+        >h1 {
+            color: #0058bc;
+            font: normal normal 700 32px / 34px "Sofia sans", sans-serif;
+        }
+
+        >h5.register-description {
+            color: #e3e3e3;
+            max-width: 70%;
+            font: normal normal 500 12px / 16px "Sofia sans", sans-serif;
+            margin-top: 0;
+        }   
+
+        >div.form-container {            
+            display: flex;
+            flex-direction: column;
+            width: 70%;
+            row-gap: 15px;
+
+            >.register-form {
+                display: flex;
+                flex-direction: column;
+                appearance: none;
+                row-gap: 15px;
+                margin: 15px 0 0 0;
+
+                >.register-name {
+                    display: flex;
+                    flex-direction: row;
+                    column-gap: 25px;
+
+                    >input { width: 100%; }
+                }
+    
+                input {
+                    background: #f7f7f7;
+                    appearance: none;
+                    border: none;
+                    border-left: 3px solid #0058bc;
+                    font: normal normal 500 22px / 24px "Sofia sans", sans-serif;
+                    line-height: 1.8em;
+                    padding-left: 15px;
+                    color: #a1a1a1;
+    
+                    &::placeholder{
+                        color: #dfdfdf;
+                    }
+
+                    &:active, &:focus-visible, &:focus {
+                        // border: 0;
+                        // border-bottom: 1px solid #0058bc;
+                        outline: 0;
+                    }
+                }
+
+                >span {
+                    color: red;
+                    font: normal normal 500 14px / 14px "Sofia sans", sans-serif;
+                    text-align: right;
+                    line-height: 1em;
+                }
+            }
+
+
+            >span {
+
+                &.general-error {
+                    color: red;
+                    font: normal normal 500 14px / 14px "Sofia sans", sans-serif;
+                    text-align: left;
+                    line-height: 1em;
+                }
+
+                &.redirect {
+                    align-self: flex-end;
+                    font: normal normal 500 14px / 16px "Sofia sans", sans-serif;
+                    color: #0058bc;
+                    margin: 0 0 15px 0;
+    
+                    &:hover {
+                        cursor: pointer;
+                        text-decoration: underline;
+                    }
+                }
+            }
+            
+    
+            >button.submit-register {
+                background-color: #0058bc;
+                border-radius: 50px;
+                // width: 50%;
+                text-transform: uppercase;
+                text-align: center;
+                font: normal normal 500 20px / 22px "Sofia sans", sans-serif;
+                letter-spacing: 3px;
+
+                position: relative;
+                overflow: hidden;
+                cursor: pointer;
+                transition-duration: 0.4s;
+                -webkit-transition-duration: 0.4s;
+
+                &:after {
+                    content: "";
+                    background: #1986d49f;
+                    padding-top: 300%;
+                    padding-left: 350%;
+
+                    display: block;
+                    position: absolute;
+
+                    margin-left: -30px !important;
+                    margin-top: -120%;
+
+                    opacity: 0;
+                    transition: all 1.5s;
+                }
+
+                &:active:after {
+                    padding: 0;
+                    margin: 0;
+                    opacity: 1;
+                    transition: 0s;
+                }
+
+                &.logged-in {
+                    background: #059862;
+                    transition: 200ms;
+                }
+            }
+        }
+    }
+    
+    @media only screen and (max-width: 1125px){
+        // max-height: 70vh;
+
+        >.right {
+
+            >img {
+                max-width: 8em;
+            }
+
+            >span {
+                font: normal normal 500 20px/24px "Sofia sans", sans-serif;
+            }
+
+            >label {
+                font: normal normal 700 36px/28px "Sofia sans", sans-serif;
+                line-height: inherit;
+            }
+
+            >p { display: none; }
+        }
+
+        >.left {
+
+            >h1 {
+                font: normal normal 700 28px/30px "Sofia sans", sans-serif;
+            }
+
+            >h5 { display: none; }
+
+            >div.form-container {
+                width: 70%;
+
+                >.register-form {
+                    >input {
+                        font: normal normal 500 18px/24px "Sofia sans", sans-serif;
+                    }
+                }
+
+                >button {
+                    font: normal normal 500 18px/20px "Sofia sans", sans-serif;
+                }
+            }
+        }
+    }
+
+    @media only screen and (max-width: 815px){
+        position: relative;
+
+        grid-template-columns: none;
+        grid-template-rows: 2fr 1fr;
+
+        max-width: 85vw;
+        // row-gap: 20px;
+
+        >.right {
+            
+
+            >hr {
+                position: absolute;
+                bottom: 2em;                
+            }
+        }
+
+    }
+
+    @media only screen and (max-width: 500px){
+        max-height: 60vh;
+
+        >.right {
+
+            >span {
+                font: normal normal 500 14px/24px "Sofia sans", sans-serif;
+            }
+
+            >label {
+                font: normal normal 700 26px/28px "Sofia sans", sans-serif;
+            }
+
+            >hr {
+                height: 6px;
+                width: 70px;
+            }
+        }
+
+        >.left {
+
+            >h1 {
+                font: normal normal 700 20px/22px "Sofia sans", sans-serif;
+            }
+
+            >div.form-container {
+
+                >.register-form > input {
+                    font: normal normal 500 16px/22px "Sofia sans", sans-serif;
+                }
+
+                >button.submit-register {
+                    font: normal normal 500 16px/18px "Sofia sans", sans-serif;
+                }
+            }
+            
+        }
+    }
+}

@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react"
 import { useLocation, Link, useNavigation, useNavigate } from "react-router-dom"
 
-import { Input } from "../../components";
+import { Input, Loading, Shimmer } from "../../components";
 
 
 // model template > https://www.freepik.com/free-vector/abstract-waves-log-landing-page_5481485.htm#query=login%20template&position=11&from_view=keyword&track=ais&uuid=0962221c-7755-4fa2-9355-43bcf7514770#position=11&query=login%20template
@@ -28,6 +28,9 @@ export default function Login() {
     // boolean for registration outcome
     const [ success, setSuccess ] = useState<boolean>(false);
 
+    const [ load, setLoad ] = useState<boolean>(false)
+
+    const [ loader, setLoader ] = useState<boolean>(false)
 
 
     useEffect(() => {
@@ -45,6 +48,17 @@ export default function Login() {
         // in case success is true we set it to false
         if(success)
             setSuccess(false)
+
+        if(load)
+            setLoad(false)
+
+        if(loader)
+            setLoader(false)
+
+        setTimeout(() => {
+            if(!load)
+                setLoad(true)
+        }, 2500)
 
     }, [])
 
@@ -117,6 +131,7 @@ export default function Login() {
             return 
                 
         try {
+
             // we create a get method
             await fetch("http://localhost:5000/users").then(res => {                
                 // check if response is ok and send either error or response in a json format
@@ -136,6 +151,8 @@ export default function Login() {
                     return
                 }
                 
+                
+                setLoader(true)
                 // we set a timeout - 5s
                 setTimeout(() => {
                     setErrorMessages({ email: "", password: "", general: "" }) // clear error msgs
@@ -145,6 +162,7 @@ export default function Login() {
                         id: data.find((x: { email: string | undefined; password: string | undefined; }) => x.email == loginValues.email && x.password == loginValues.password).id,
                         newUser: false
                     }))
+                    setLoader(false)
                     setSuccess(true) // set success to true
                     setTimeout(() => { navigate("/"); }, 2000) // after 2s we redirect user to dashboard
                 }, 5000)
@@ -162,35 +180,44 @@ export default function Login() {
     
 
     return (
-        <>
-                <div  className="left" >
-                    <img src={"../../assets/datawise.png"} />
-                    <span>Nice to see you again</span>
-                    <label>Welcome back</label>
-                    <hr />
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id eros vel libero tempus efficitur vitae sed nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
-                </div>
-                <div className="right">
-                    <h1>Login Account</h1>
-                    <h5 className="login-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id eros vel libero tempus efficitur vitae sed nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</h5>
-                    <div className="form-container">
-                        <div className="login-form">
-                            <Input type="email" id="email" placeholder="Email ID" onChange={handleLogin} value={loginValues.email} errorMessage={errorMessages.email} />
-                            <Input type="password" id="password" placeholder="Password" onChange={handleLogin} value={loginValues.password} errorMessage={errorMessages.password} />
-                        </div>
-                        { errorMessages.general != "" ? 
-                            <span className="general-error">{errorMessages.general}</span>
-                        : null}
-                        <span className="redirect">
-                            <Link to="/register">
-                                Not a member yet?
-                            </Link>
-                        </span>
-                        <button type="submit" className={`submit-login ${!success ? "" : "logged-in"}`} onClick={handleLoginSubmition} >
-                            { !success ? "Enter" : "Glad your back! :)"}
-                        </button>
+        <>  
+            { !load ? 
+                <>
+                    <Shimmer />
+                </>
+            : 
+                <>
+                    <div  className="left" >
+                        <img src={"../../assets/datawise.png"} />
+                        <span>Nice to see you again</span>
+                        <label>Welcome back</label>
+                        <hr />
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id eros vel libero tempus efficitur vitae sed nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. </p>
                     </div>
-                </div>
+                    <div className="right">
+                        <h1>Login Account</h1>
+                        <h5 className="login-description">Lorem ipsum dolor sit amet, consectetur adipiscing elit. In id eros vel libero tempus efficitur vitae sed nisl. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</h5>
+                        <div className="form-container">
+                            <div className="login-form">
+                                <Input type="email" id="email" placeholder="Email ID" onChange={handleLogin} value={loginValues.email} errorMessage={errorMessages.email} readonly={false} />
+                                <Input type="password" id="password" placeholder="Password" onChange={handleLogin} value={loginValues.password} errorMessage={errorMessages.password} readonly={false} />
+                            </div>
+                            { errorMessages.general != "" ? 
+                                <span className="general-error">{errorMessages.general}</span>
+                            : null}
+                            <span className="redirect">
+                                <Link to="/register">
+                                    Not a member yet?
+                                </Link>
+                            </span>
+                            <button type="submit" className={`submit-login ${!success ? "" : "logged-in"}`} onClick={handleLoginSubmition} >
+                                { loader ? <Loading /> : success && !loader ? "Glad your back! :)" : "Enter"}
+                                {/* { !success && !loader ? "Enter" : "Glad your back! :)"} */}
+                            </button>
+                        </div>
+                    </div>
+                </>
+            }
         </>
     )
 }

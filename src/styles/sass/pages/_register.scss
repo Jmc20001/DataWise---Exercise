@@ -1,6 +1,6 @@
 div.\/register {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr !important;
     max-width: 70vw;
     max-height: 70vh;
 
@@ -8,6 +8,9 @@ div.\/register {
     border-radius: 18px;
 
     transition: all .5s ease-in-out;
+
+    position: relative;
+    overflow: hidden;
 
     >.right {
         display: flex;

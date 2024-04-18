@@ -25,7 +25,7 @@
       "id": "91dbab8d-7a05-f2ec-74b5-eabfefdba281",
       "email": "joao.m.caetano@hotmail.com",
       "password": "Teste!123",
-      "firtName": "João",
+      "firstName": "João",
       "lastName": "Caetano"
     }
   ],
@@ -34,7 +34,7 @@
       "userId": "1",
       "postedAt": "2024-03-20T10:00:00",
       "title": "Exciting News!",
-      "text": "I'm thrilled to share that I've started a new journey!",
+      "text": "I'm thrilled to share that I've started a new journey! I'm thrilled to share that I've started a new journey!",
       "id": "6b5e"
     },
     {

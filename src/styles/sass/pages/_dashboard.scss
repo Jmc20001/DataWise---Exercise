@@ -1,0 +1,46 @@
+div.\/dashboard {
+    max-width: 85vw;
+    max-height: 85vh;
+
+    display: grid;
+    grid-template-areas: "sidenav main main";    
+    grid-template-columns: 8% 92%;
+
+    border-radius: 29px;
+    background: #14172e;
+
+
+    >div.content {
+        grid-area: main;
+        display: grid;
+        grid-template-columns: 90% 10%;
+
+        background: #fff;
+        border-radius: 29px 29px 29px 0;
+
+        position: relative;
+        overflow: hidden;
+        
+
+        &.big {
+            grid-template-columns: 75% 25%;
+        }
+
+        >div.posts-content {
+            flex-wrap: wrap;
+            display: flex;
+            gap: 25px;
+            overflow: auto;
+            margin: 25px;
+        }
+
+        @media only screen and (max-width: 1225px){
+            grid-template-columns: 100%;
+
+
+            div.profile{
+                display: none;
+            }
+        }
+    }
+}

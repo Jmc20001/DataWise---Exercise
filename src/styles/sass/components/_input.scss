@@ -1,0 +1,27 @@
+input {
+    background: #f7f7f7;
+    appearance: none;
+    border: none;
+    border-left: 3px solid #0058bc;
+    font: normal normal 500 22px / 24px "Sofia sans", sans-serif;
+    line-height: 1.8em;
+    padding-left: 15px;
+    color: #a1a1a1;
+
+    &::placeholder{
+        color: #dfdfdf;
+    }
+
+    &:active, &:focus-visible, &:focus {
+        // border: 0;
+        // border-bottom: 1px solid #0058bc;
+        outline: 0;
+    }
+}
+
+>span {
+    color: red;
+    font: normal normal 500 14px / 14px "Sofia sans", sans-serif;
+    text-align: right;
+    line-height: 0.5em;
+}

@@ -1,16 +1,54 @@
-/* HTML: <div class="loader"></div> */
-
 div.loading {
-    font-weight: bold;
-    display: inline-block;
-    font-family: monospace;
-    font-size: 30px;
-    clip-path: inset(0 3ch 0 0);
-    animation: load 1s steps(4) infinite;
+    width: 100%;
+    text-align: center;
+    
+    >div {
+        width: 14px;
+        height: 14px;
+        background-color: #fff;
 
-    @keyframes load {
-        to {
-            clip-path: inset(0 -1ch 0 0);
+        border-radius: 100%;
+        display: inline-block;
+
+        -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+        animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+
+        &.bounce1 {
+            -webkit-animation-delay: -0.32s;
+            animation-delay: -0.32s;
+        }
+
+        &.bounce2{
+            -webkit-animation-delay: -0.16s;
+            animation-delay: -0.16s;
+
+            margin: 0 10px;
+        }
+
+        @-webkit-keyframes sk-bouncedelay {
+            0% { -webkit-transform: scale(0) }
+            80% { -webkit-transform: scale(0) }
+            100% { -webkit-transform: scale(0) }
+            40% { -webkit-transform: scale(1.0) }
+        }
+          
+        @keyframes sk-bouncedelay {
+            0% { 
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            } 
+            80% { 
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            } 
+            100% { 
+                -webkit-transform: scale(0);
+                transform: scale(0);
+            } 
+            40% { 
+                -webkit-transform: scale(1.0);
+                transform: scale(1.0);
+            }
         }
     }
 }

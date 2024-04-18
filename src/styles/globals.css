@@ -4,31 +4,313 @@ div.layout {
   height: 100vh;
 }
 
-/* HTML: <div class="loader"></div> */
 div.loading {
-  font-weight: bold;
-  display: inline-block;
-  font-family: monospace;
-  font-size: 30px;
-  -webkit-clip-path: inset(0 3ch 0 0);
-          clip-path: inset(0 3ch 0 0);
-  animation: load 1s steps(4) infinite;
+  width: 100%;
+  text-align: center;
 }
-@keyframes load {
-  to {
-    -webkit-clip-path: inset(0 -1ch 0 0);
-            clip-path: inset(0 -1ch 0 0);
+div.loading > div {
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+  border-radius: 100%;
+  display: inline-block;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+}
+div.loading > div.bounce1 {
+  animation-delay: -0.32s;
+}
+div.loading > div.bounce2 {
+  animation-delay: -0.16s;
+  margin: 0 10px;
+}
+@keyframes sk-bouncedelay {
+  0% {
+    transform: scale(0);
   }
+  80% {
+    transform: scale(0);
+  }
+  100% {
+    transform: scale(0);
+  }
+  40% {
+    transform: scale(1);
+  }
+}
+
+input {
+  background: #f7f7f7;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  border: none;
+  border-left: 3px solid #0058bc;
+  font: normal normal 500 22px/24px "Sofia sans", sans-serif;
+  line-height: 1.8em;
+  padding-left: 15px;
+  color: #a1a1a1;
+}
+input::-moz-placeholder {
+  color: #dfdfdf;
+}
+input::placeholder {
+  color: #dfdfdf;
+}
+input:active, input:focus-visible, input:focus {
+  outline: 0;
+}
+
+> span {
+  color: red;
+  font: normal normal 500 14px/14px "Sofia sans", sans-serif;
+  text-align: right;
+  line-height: 0.5em;
+}
+
+div.shimmer-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  animation: loading 2.5s infinite;
+}
+div.shimmer-container > div.shimmer-effect {
+  width: 10%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  transform: rotate(20deg);
+  box-shadow: 0 0 30px 30px rgba(0, 0, 0, 0.2);
+}
+@keyframes loading {
+  0% {
+    transform: translateX(-150%);
+  }
+  50% {
+    transform: translateX(-60%);
+  }
+  100% {
+    transform: translateX(150%);
+  }
+}
+
+div.sidenav {
+  grid-area: sidenav;
+  border-radius: 29px 0 0 29px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 25px 5px;
+  align-items: center;
+}
+div.sidenav > img {
+  max-width: 70px;
+}
+div.sidenav > div.side-links {
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  row-gap: 5%;
+}
+div.sidenav > div.side-links > div {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+}
+div.sidenav > div.side-links > div.side-body {
+  justify-content: flex-end;
+  height: 40%;
+}
+div.sidenav > div.side-links > div.side-footer {
+  border-top: 1px solid #fff;
+}
+
+div.profile {
+  background: #7fbcf3;
+  border-radius: 29px 29px 29px 0;
+  padding: 50px 25px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  row-gap: 25px;
+  overflow: hidden;
+}
+div.profile div.user-info {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 15px;
+}
+div.profile div.user-info input {
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  border-left: none;
+  font-size: 16px;
+  width: 4rem;
+  padding: 0 15px;
+}
+div.profile div.user-posts {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  padding: 50px 0;
+  border-top: 1px solid #fff;
+  width: 100%;
+  position: relative;
+}
+div.profile div.user-posts span.user-posts-span {
+  position: absolute;
+  top: 15px;
+  right: 25px;
+  font: normal italic 500 14px/16px "Sofia sans", sans-serif;
+  text-decoration: underline;
+  color: #fff;
+}
+div.profile.big div.user-info input {
+  background: transparent;
+  border-bottom: 1px solid #fff;
+  color: #fff;
+  border-left: none;
+  width: 13rem;
+  font-size: 16px;
+}
+div.profile.big div.user-posts span.user-posts-span {
+  right: 15px;
+}
+
+div.popup {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 1;
+  transition: 300ms;
+}
+div.popup[data-open=true] {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  visibility: visible;
+  transition: all 300ms;
+}
+div.popup[data-open=true] div.popup-overlay {
+  opacity: 0.5;
+  transition: opacity 300ms;
+}
+div.popup div.popup-overlay {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #000;
+  opacity: 0;
+  transition: opacity 300ms;
+}
+div.popup div.popup-container {
+  width: 100%;
+  max-width: 500px;
+  height: 650px;
+  padding: 25px;
+  background: #f2f2f2;
+  border-radius: 12px;
+  position: relative;
+  z-index: 1;
+}
+div.popup div.popup-container div.close-popup {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+}
+div.popup div.popup-container div.close-popup > img {
+  width: 25px;
+  height: 25px;
+}
+
+div.post {
+  width: 100%;
+  height: auto;
+  background: #edeaea;
+  border-radius: 18px;
+  box-shadow: 1px 15px 25px rgba(0, 0, 0, 0.06);
+  max-width: 25%;
+  max-height: 250px;
+  padding: 25px;
+  position: relative;
+}
+div.post div.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+div.post div.post-header label.post-title {
+  font: normal normal 700 18px/20px "Sofia sans", sans-serif;
+}
+div.post div.post-header span.post-date {
+  font: normal italic 500 14px/16px "Sofia sans", sans-serif;
+  color: #a1a2a8;
+}
+div.post p.post-message {
+  font: normal normal 500 16px/18px "Sofia sans", sans-serif;
+  text-align: left;
+  margin-top: 30px;
+}
+div.post span.post-full {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  cursor: pointer;
+  font: normal italic 700 14px/16px "Sofia sans", sans-serif;
+  color: #a1a2a8;
+}
+div.post span.post-full:hover {
+  color: #7fbcf3;
+  text-decoration: underline;
+}
+div.post.x1 {
+  max-width: 125px;
+  max-height: 150px;
+  padding: 15px;
+}
+div.post.x1 div.post-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+div.post.x1 div.post-header label.post-title {
+  font: normal normal 700 14px/16px "Sofia sans", sans-serif;
+}
+div.post.x1 div.post-header span.post-date {
+  font: normal italic 500 10px/12px "Sofia sans", sans-serif;
+  color: #a1a2a8;
+}
+div.post.x1 p.post-message {
+  font: normal normal 500 14px/16px "Sofia sans", sans-serif;
+  text-align: left;
+  margin-top: 15px;
 }
 
 div.\/login {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr !important;
   max-width: 70vw;
   max-height: 70vh;
   background: #fff;
   border-radius: 18px;
   transition: all 0.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
 }
 div.\/login > .left {
   display: flex;
@@ -250,12 +532,14 @@ div.\/login > .right > div.form-container > button.submit-login.logged-in {
 
 div.\/register {
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr 1fr !important;
   max-width: 70vw;
   max-height: 70vh;
   background: #fff;
   border-radius: 18px;
   transition: all 0.5s ease-in-out;
+  position: relative;
+  overflow: hidden;
 }
 div.\/register > .right {
   display: flex;
@@ -484,6 +768,69 @@ div.\/register > .left > div.form-container > button.submit-register.logged-in {
   }
 }
 
+div.\/dashboard {
+  max-width: 85vw;
+  max-height: 85vh;
+  display: grid;
+  grid-template-areas: "sidenav main main";
+  grid-template-columns: 8% 92%;
+  border-radius: 29px;
+  background: #14172e;
+}
+div.\/dashboard > div.content {
+  grid-area: main;
+  display: grid;
+  grid-template-columns: 90% 10%;
+  background: #fff;
+  border-radius: 29px 29px 29px 0;
+  position: relative;
+  overflow: hidden;
+}
+div.\/dashboard > div.content.big {
+  grid-template-columns: 75% 25%;
+}
+div.\/dashboard > div.content > div.posts-content {
+  flex-wrap: wrap;
+  display: flex;
+  gap: 25px;
+  overflow: auto;
+  margin: 25px;
+}
+@media only screen and (max-width: 1225px) {
+  div.\/dashboard > div.content {
+    grid-template-columns: 100%;
+  }
+  div.\/dashboard > div.content div.profile {
+    display: none;
+  }
+}
+
+div.\/error {
+  max-width: 85vw;
+  max-height: 85vh;
+  position: relative;
+}
+div.\/error > div.error-card div.popup-container {
+  max-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+div.\/error > div.error-card div.popup-container label.error-message {
+  font: normal normal 500 26px/28px "Sofia sans", sans-serif;
+}
+div.\/error > div.error-card div.popup-container span.error-link {
+  font: normal italic 500 20px/22px "Sofia sans", sans-serif;
+  cursor: pointer;
+  color: #a7a5a5;
+  transition: 100ms;
+}
+div.\/error > div.error-card div.popup-container span.error-link:hover {
+  text-decoration: underline;
+  color: #213547;
+}
+
 :root {
   font-family: "Sofia-sans", sans-serif;
   line-height: 1.5;
@@ -535,14 +882,15 @@ button {
   transition: border-color 0.25s;
 }
 
-button:hover {
-  border-color: #646cff;
-}
-
 button:focus,
 button:focus-visible,
 button:active {
   outline: 0;
+}
+
+div.layout {
+  display: grid;
+  box-shadow: 0px 3px 10px 0px rgba(0, 0, 0, 0.25);
 }
 
 @media (prefers-color-scheme: dark) {
@@ -558,19 +906,23 @@ button:active {
   text-align: center;
 }
 
-@keyframes logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
-}
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
-  }
-}
 * {
   transition: all 0.5s ease;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 50px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(127, 188, 243, 0.5);
+  border-radius: 50px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgb(127, 188, 243);
 }/*# sourceMappingURL=globals.css.map */

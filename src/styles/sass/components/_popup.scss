@@ -1,0 +1,68 @@
+div.popup {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 1;
+
+    transition: 300ms;
+
+    &[data-open = "true"]{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        visibility: visible;
+        transition: all 300ms;
+
+
+
+        div.popup-overlay {
+            opacity: 0.5;
+            transition: opacity 300ms;
+        }
+    }
+
+    
+    div.popup-overlay {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        background: #000;
+
+        opacity: 0;
+        transition: opacity 300ms;
+    }
+
+    div.popup-container {
+        width: 100%;
+        max-width: 500px;
+        height: 650px;
+
+        padding: 25px;
+
+        background: #f2f2f2;
+        border-radius: 12px;
+
+        position: relative;
+        z-index: 1;
+
+        div.close-popup {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+
+            width: 25px;
+            height: 25px;
+            cursor: pointer;
+            
+            >img {
+                width: 25px;
+                height: 25px;
+           }
+        }
+    }
+}

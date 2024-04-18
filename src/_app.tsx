@@ -32,7 +32,6 @@ const router = createBrowserRouter([
 
 function App () { 
 
-
   return (
     <>
       <div id='layout' className='layout'>

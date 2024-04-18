@@ -10,12 +10,13 @@ type InputProps = {
     placeholder?: string,
     errorMessage?: string,
     onChange?: any,
+    readonly: boolean,
     onClick?: () => void
 }
 
-export default function Input({ id, name, className, type, value, label, placeholder, errorMessage, onChange, onClick } : InputProps) {
+export default function Input({ id, name, className, type, value, label, placeholder, errorMessage, onChange, readonly, onClick } : InputProps) {
 
-    const [ val, setVal ] = useState<any>();
+    // const [ val, setVal ] = useState<any>();
 
 
     return (
@@ -27,10 +28,10 @@ export default function Input({ id, name, className, type, value, label, placeho
                             <div>
                                 
                                 <label htmlFor={name ? name : ""}>{label}</label>          
-                                <input type="number" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={val} onChange={(e) => onChange?.(e) || null}/>
+                                <input type="number" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value} onChange={(e) => onChange?.(e) || null} readOnly={readonly}/>
                             </div>
                         : 
-                            <input type="number" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={val} onChange={(e) => onChange?.(e) || null}/>
+                            <input type="number" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value} onChange={(e) => onChange?.(e) || null} readOnly={readonly}/>
                         }
                     </>
                 : type == "submit" ? 
@@ -39,14 +40,14 @@ export default function Input({ id, name, className, type, value, label, placeho
                             <div>
                                 
                                 <label htmlFor={name ? name : ""}>{label}</label>       
-                                <input type="submit" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value ? value : "Submit"} onClick={() => onClick?.() || null}/>
+                                <input type="submit" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value ? value : "Submit"} onClick={() => onClick?.() || null} readOnly={readonly}/>
                                 { errorMessage || errorMessage != "" ?
                                     <span>{errorMessage}</span>
                                 : null}
                             </div>
                         : 
                             <>
-                                <input type="submit" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value ? value : "Submit"} onClick={() => onClick?.() || null}/>
+                                <input type="submit" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value ? value : "Submit"} onClick={() => onClick?.() || null} readOnly={readonly}/>
                             </>
                         }
                     </>
@@ -56,11 +57,11 @@ export default function Input({ id, name, className, type, value, label, placeho
                             <div>
                                 
                                 <label htmlFor={name ? name : ""}>{label}</label>          
-                                <input type="password" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={val} onChange={(e) => onChange?.(e) || null}/>
+                                <input type="password" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value} onChange={(e) => onChange?.(e) || null} readOnly={readonly}/>
                             </div>
                         : 
                             <>
-                                <input type="password" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={val} onChange={(e) => onChange?.(e) || null}/>
+                                <input type="password" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value} onChange={(e) => onChange?.(e) || null} readOnly={readonly}/>
                                 { errorMessage || errorMessage != "" ?
                                     <span>{errorMessage}</span>
                                 : null}
@@ -73,11 +74,11 @@ export default function Input({ id, name, className, type, value, label, placeho
                             <div>
                                 
                                 <label htmlFor={name ? name : ""}>{label}</label>          
-                                <input type="email" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={val} onChange={(e) => onChange?.(e) || null}/>
+                                <input type="email" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value} onChange={(e) => onChange?.(e) || null} readOnly={readonly}/>
                             </div>
                         : 
                             <>
-                                <input type="email" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={val} onChange={(e) => onChange?.(e) || null}/>
+                                <input type="email" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value} onChange={(e) => onChange?.(e) || null} readOnly={readonly}/>
                                 { errorMessage || errorMessage != "" ?
                                     <span>{errorMessage}</span>
                                 : null}
@@ -90,10 +91,10 @@ export default function Input({ id, name, className, type, value, label, placeho
                             <div>
                                 
                                 <label htmlFor={name ? name : ""}>{label}</label>          
-                                <input type="text" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={val} onChange={(e) => onChange(e)}/>
+                                <input type="text" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value} onChange={(e) => onChange(e)} readOnly={readonly}/>
                             </div>
                         : 
-                            <input type="text" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={val} onChange={(e) => onChange(e)}/>
+                            <input type="text" className={`standard-input ${className ? className : ""}`} id={ id ? id : ""} name={name ? name : ""} placeholder={placeholder ? placeholder : ""} value={value} onChange={(e) => onChange(e)} readOnly={readonly}/>
                         }
                     </>
             }

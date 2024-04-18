@@ -1,6 +1,6 @@
 div.\/login {
     display: grid;
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr 1fr !important;
     max-width: 70vw;
     max-height: 70vh;
 
@@ -8,6 +8,9 @@ div.\/login {
     border-radius: 18px;
 
     transition: all .5s ease-in-out;
+
+    position: relative;
+    overflow: hidden;
 
     >.left {
         display: flex;

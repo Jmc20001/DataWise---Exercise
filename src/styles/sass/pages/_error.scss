@@ -1,0 +1,37 @@
+div.\/error{    
+    max-width: 85vw;
+    max-height: 85vh;
+
+    position: relative;
+
+    >div.error-card {
+
+
+        div.popup-container {
+            max-height: 300px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: space-around;
+            
+            label.error-message {
+                font: normal normal 500 26px / 28px "Sofia sans", sans-serif;
+            }
+    
+            span.error-link {
+                font: normal italic 500 20px / 22px "Sofia sans", sans-serif;
+                cursor: pointer;
+                color: #a7a5a5;
+                
+                transition: 100ms;
+    
+                &:hover {
+                    text-decoration: underline;
+                    color: #213547;
+                }
+            }
+        }
+
+    }
+}

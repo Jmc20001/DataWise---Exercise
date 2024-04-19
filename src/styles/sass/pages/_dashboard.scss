@@ -29,18 +29,46 @@ div.\/dashboard {
         >div.posts-content {
             flex-wrap: wrap;
             display: flex;
-            gap: 25px;
+            gap: 25px 1%;
             overflow: auto;
             margin: 25px;
         }
 
-        @media only screen and (max-width: 1225px){
+    }
+    
+    @media only screen and (max-width: 1225px){
+        grid-template-columns: 80px 90%;
+
+        div.content {
             grid-template-columns: 100%;
-
-
+    
+    
             div.profile{
                 display: none;
             }
+    
+            &.big {
+                grid-template-columns: 100%;
+            }
+
         }
+    }
+
+    @media only screen and (max-width: 790px) {
+        grid-template-columns: 80px 80%;
+    }
+
+    
+    @media only screen and (max-width: 530px){
+        
+        div.content {
+
+            div.posts-content {
+                padding-right: 15px;
+                margin: inherit 15px;
+            }
+        }
+
+
     }
 }

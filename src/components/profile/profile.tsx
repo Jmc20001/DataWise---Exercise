@@ -51,7 +51,7 @@ export default function Profile({ data, size, onClick } : ProfileProps){
     
     async function _getUsersPosts(){
         try{
-            await fetch("http://localhost:5000/posts?userId=" + profile?.id).then(res => {
+            await fetch("http://localhost:5000/posts?userId=" + 1).then(res => {
                 if(!res.ok)
                     throw Error("Error fetching posts data")
 
@@ -100,7 +100,6 @@ export default function Profile({ data, size, onClick } : ProfileProps){
                             <Input readonly={true} type="text" value={profile?.lastName}  />
                         </>
                     : <Input readonly={true} type="text"  /> }
-                    {/* <Input disabled={true} value={profile?.lastName} /> */}
                 </div>  
                 {
                     userPostsLoad ? 
@@ -108,7 +107,7 @@ export default function Profile({ data, size, onClick } : ProfileProps){
                             <span className="user-posts-span">{ postsData.length > 0 ? "Your posts" : "You have no posts" }</span>
                             {
                                 postsData?.map(post => {
-                                    return <Posts key={post.id} data={{ id: post.id, title: post.title, message: post.message.substring(0, 25) + "...", date: post.date }} size="x1" /> 
+                                    return <Posts key={post.id} data={{ id: post.id, title: post.title, message: post.message.substring(0, 25) + "...", date: post.date }} size="x1" profile={size} /> 
                                 }) 
                             }
                         </div>

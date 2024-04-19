@@ -18,11 +18,13 @@ div.post {
 
         label.post-title {
             font: normal normal 700 18px/20px "Sofia sans", sans-serif;
+            text-align: left;
         }
 
         span.post-date {
             font: normal italic 500 14px/16px "Sofia sans", sans-serif;
             color: #a1a2a8;
+            text-align: right;
         }
     }
 
@@ -49,46 +51,90 @@ div.post {
     }
 
     &.x1 {
-        max-width: 125px;
-        max-height: 150px;
+        max-width: 100%;
         padding: 15px;
 
-        div.post-header{
+        div.post-header {
             display: flex;
             justify-content: space-between;
             align-items: flex-end;
-    
-    
+
             label.post-title {
-                font: normal normal 700 14px/16px "Sofia sans", sans-serif;
+                font: normal normal 700 12px/14px "Sofia sans", sans-serif;
             }
-    
+
+
             span.post-date {
-                font: normal italic 500 10px/12px "Sofia sans", sans-serif;
-                color: #a1a2a8;
+                display: none;
             }
         }
-    
+
         p.post-message {
-            font: normal normal 500 14px/16px "Sofia sans", sans-serif;
+            font: normal normal 500 10px/12px "Sofia sans", sans-serif;
             text-align: left;
-    
+        
             margin-top: 15px;
         }
-    
-        // span.post-full {
-        //     position: absolute;
-        //     bottom: 25px;
-        //     right: 25px;
-        //     cursor: pointer;
-    
-        //     font: normal italic 700 14px / 16px "Sofia sans", sans-serif;
-        //     color: #a1a2a8;
-    
-        //     &:hover {
-        //         color: #7fbcf3;
-        //         text-decoration: underline;
-        //     }
-        // }
+
+        &.big {
+            div.post-header{       
+        
+                label.post-title {
+                    font: normal normal 700 14px/16px "Sofia sans", sans-serif;
+                }
+        
+                span.post-date {
+                    font: normal italic 500 10px/12px "Sofia sans", sans-serif;
+                    color: #a1a2a8;
+                }
+            }
+        
+            p.post-message {
+                font: normal normal 500 14px/16px "Sofia sans", sans-serif;
+            }
+        }
+    }
+
+
+    @media only screen and (max-width: 1100px){
+        max-width: 20%;
+        max-height: fit-content;
+
+        div.post-header {
+
+            label.post-title {
+                font: normal normal 700 16px/18px "Sofia sans", sans-serif;
+            }
+
+            span.post-date {
+                display: none;
+            }
+        }
+
+        p.post-message {
+            font: normal normal 500 10px/18px "Sofia sans", sans-serif;
+            margin-top: 15px;
+        }
+
+        span.post-full {
+            font: normal italic 700 10px/12px "Sofia sans", sans-serif;
+            bottom: 15px;
+        }
+    }
+
+    @media only screen and (max-width: 790px){
+        max-width: 30%;
+
+    }
+
+    @media only screen and (max-width: 530px){
+        max-width: 100%;
+        padding: 20px;
+
+
+        p.post-message {
+            font: normal normal 500 13px/16px "Sofia sans", sans-serif;
+        }
+
     }
 }

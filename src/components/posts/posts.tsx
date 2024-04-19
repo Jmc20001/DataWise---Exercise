@@ -9,11 +9,12 @@ type CardProps = {
     },
     className?: string,
     size?: "x1" | "x2",
+    profile?: string,
     onClick?: () => void, 
     ref?: any
 }
 
-export default function Posts({ data, className, size, onClick, ref } : CardProps){
+export default function Posts({ data, className, size, profile, onClick, ref } : CardProps){
 
     const [ post, setPost ] = useState<{ id: string, title: string, date: string, message: string }>({
         id: "",
@@ -43,7 +44,7 @@ export default function Posts({ data, className, size, onClick, ref } : CardProp
         <>
             {
                 load ?
-                    <div className={`post ${className ? className : ""} ${size ? size : ""}`} key={post?.id}>
+                    <div className={`post ${className ? className : ""} ${size ? size : ""} ${profile ? profile : ""}`} key={post?.id}>
                         <div className="post-header">
                             <label className="post-title">{post?.title}</label>
                             <span className="post-date">{post?.date}</span>

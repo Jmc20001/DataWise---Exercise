@@ -130,7 +130,7 @@ div.sidenav > div.side-links > div.side-footer {
 div.profile {
   background: #7fbcf3;
   border-radius: 29px 29px 29px 0;
-  padding: 50px 25px;
+  padding: 50px 10px;
   position: relative;
   display: flex;
   flex-direction: column;
@@ -153,25 +153,24 @@ div.profile div.user-info input {
   border-left: none;
   font-size: 16px;
   width: 4rem;
-  padding: 0 15px;
+  padding: 0;
 }
 div.profile div.user-posts {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
   align-items: center;
-  padding: 50px 0;
+  padding: 15px 0;
   border-top: 1px solid #fff;
   width: 100%;
   position: relative;
+  overflow: auto;
 }
 div.profile div.user-posts span.user-posts-span {
-  position: absolute;
-  top: 15px;
-  right: 25px;
-  font: normal italic 500 14px/16px "Sofia sans", sans-serif;
-  text-decoration: underline;
-  color: #fff;
+  display: none;
+}
+div.profile.big {
+  padding: 50px 25px;
 }
 div.profile.big div.user-info input {
   background: transparent;
@@ -181,8 +180,16 @@ div.profile.big div.user-info input {
   width: 13rem;
   font-size: 16px;
 }
+div.profile.big div.user-posts {
+  padding: 50px 15px;
+}
 div.profile.big div.user-posts span.user-posts-span {
+  position: absolute;
+  top: 15px;
   right: 15px;
+  font: normal italic 500 14px/16px "Sofia sans", sans-serif;
+  text-decoration: underline;
+  color: #fff;
 }
 
 div.popup {
@@ -256,10 +263,12 @@ div.post div.post-header {
 }
 div.post div.post-header label.post-title {
   font: normal normal 700 18px/20px "Sofia sans", sans-serif;
+  text-align: left;
 }
 div.post div.post-header span.post-date {
   font: normal italic 500 14px/16px "Sofia sans", sans-serif;
   color: #a1a2a8;
+  text-align: right;
 }
 div.post p.post-message {
   font: normal normal 500 16px/18px "Sofia sans", sans-serif;
@@ -279,8 +288,7 @@ div.post span.post-full:hover {
   text-decoration: underline;
 }
 div.post.x1 {
-  max-width: 125px;
-  max-height: 150px;
+  max-width: 100%;
   padding: 15px;
 }
 div.post.x1 div.post-header {
@@ -289,16 +297,60 @@ div.post.x1 div.post-header {
   align-items: flex-end;
 }
 div.post.x1 div.post-header label.post-title {
-  font: normal normal 700 14px/16px "Sofia sans", sans-serif;
+  font: normal normal 700 12px/14px "Sofia sans", sans-serif;
 }
 div.post.x1 div.post-header span.post-date {
+  display: none;
+}
+div.post.x1 p.post-message {
+  font: normal normal 500 10px/12px "Sofia sans", sans-serif;
+  text-align: left;
+  margin-top: 15px;
+}
+div.post.x1.big div.post-header label.post-title {
+  font: normal normal 700 14px/16px "Sofia sans", sans-serif;
+}
+div.post.x1.big div.post-header span.post-date {
   font: normal italic 500 10px/12px "Sofia sans", sans-serif;
   color: #a1a2a8;
 }
-div.post.x1 p.post-message {
+div.post.x1.big p.post-message {
   font: normal normal 500 14px/16px "Sofia sans", sans-serif;
-  text-align: left;
-  margin-top: 15px;
+}
+@media only screen and (max-width: 1100px) {
+  div.post {
+    max-width: 20%;
+    max-height: -moz-fit-content;
+    max-height: fit-content;
+  }
+  div.post div.post-header label.post-title {
+    font: normal normal 700 16px/18px "Sofia sans", sans-serif;
+  }
+  div.post div.post-header span.post-date {
+    display: none;
+  }
+  div.post p.post-message {
+    font: normal normal 500 10px/18px "Sofia sans", sans-serif;
+    margin-top: 15px;
+  }
+  div.post span.post-full {
+    font: normal italic 700 10px/12px "Sofia sans", sans-serif;
+    bottom: 15px;
+  }
+}
+@media only screen and (max-width: 790px) {
+  div.post {
+    max-width: 30%;
+  }
+}
+@media only screen and (max-width: 530px) {
+  div.post {
+    max-width: 100%;
+    padding: 20px;
+  }
+  div.post p.post-message {
+    font: normal normal 500 13px/16px "Sofia sans", sans-serif;
+  }
 }
 
 div.\/login {
@@ -792,16 +844,33 @@ div.\/dashboard > div.content.big {
 div.\/dashboard > div.content > div.posts-content {
   flex-wrap: wrap;
   display: flex;
-  gap: 25px;
+  gap: 25px 1%;
   overflow: auto;
   margin: 25px;
 }
 @media only screen and (max-width: 1225px) {
-  div.\/dashboard > div.content {
+  div.\/dashboard {
+    grid-template-columns: 80px 90%;
+  }
+  div.\/dashboard div.content {
     grid-template-columns: 100%;
   }
-  div.\/dashboard > div.content div.profile {
+  div.\/dashboard div.content div.profile {
     display: none;
+  }
+  div.\/dashboard div.content.big {
+    grid-template-columns: 100%;
+  }
+}
+@media only screen and (max-width: 790px) {
+  div.\/dashboard {
+    grid-template-columns: 80px 80%;
+  }
+}
+@media only screen and (max-width: 530px) {
+  div.\/dashboard div.content div.posts-content {
+    padding-right: 15px;
+    margin: inherit 15px;
   }
 }
 
